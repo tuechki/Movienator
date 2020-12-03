@@ -1,0 +1,38 @@
+version: '3.1'
+
+services:
+  movienator-api:
+    container_name: movienator-api
+    depends_on:
+      - elasticsearch
+      - graphdb
+    image: movienator-api:${project.version}
+    ports:
+      - "8888:8080"
+      - "9010:9010"
+      - "28888:28888"
+    environment:
+      SPARQL_REPOSITORY: movieDB
+      SPARQL_ENDPOINT: http://graphdb:7200
+      CATALINA_OPTS: -Xms1g -Xmx1g
+    secrets:
+      - omdb.apikey
+
+  elasticsearch:
+    container_name: elasticsearch
+    image: elasticsearch:6.8.3
+    ports:
+      - "9200:9200"
+
+  graphdb:
+    container_name: graphdb
+    image: docker-graphdb:${project.version}
+    environment:
+      ELASTICSEARCH_URI: http://elasticsearch
+      ELASTICSEARCH_PORT: 9200
+    ports:
+      - "9020:7200"
+
+secrets:
+  omdb.apikey:
+    external: true

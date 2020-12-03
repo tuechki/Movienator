@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true" scan="true" scanPeriod="30 seconds">
+  <appender class="ch.qos.logback.core.ConsoleAppender" name="Console-Appender">
+    <layout>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </layout>
+  </appender>
+  <appender class="ch.qos.logback.core.FileAppender" name="File-Appender">
+    <encoder>
+      <outputPatternAsHeader>true</outputPatternAsHeader>
+      <pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+    </encoder>
+    <file>${LOG_PATH}/logfile-${timestamp-by-second}.log</file>
+  </appender>
+  <logger additivity="false" level="info" name="com.ontotext.example.movienator.Application">
+    <appender-ref ref="Console-Appender"/>
+    <appender-ref ref="File-Appender"/>
+  </logger>
+  <property name="LOG_PATH" value="logs"/>
+  <root>
+    <appender-ref ref="Console-Appender"/>
+    <level value="INFO"/>
+  </root>
+  <timestamp datePattern="yyyyMMdd'T'HHmmss" key="timestamp-by-second"/>
+</configuration>

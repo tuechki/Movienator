@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>movienator-parent</artifactId>
+    <groupId>com.ontotext.example</groupId>
+    <version>0.0.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>performance-tests</artifactId>
+
+  <properties>
+    <com.lazerycode.jmeter.version>2.8.6</com.lazerycode.jmeter.version>
+    <server>127.0.0.1</server>
+    <port>8888</port>
+    <path>/movienator-api</path>
+    <numThreads>10</numThreads>
+    <rampUp>1</rampUp>
+    <loopCount>1000</loopCount>
+    <csvfile>movies.csv</csvfile>
+  </properties>
+
+  <profiles>
+
+    <profile>
+      <id>performance-tests</id>
+      <build>
+        <plugins>
+          <plugin>
+            <groupId>com.lazerycode.jmeter</groupId>
+            <artifactId>jmeter-maven-plugin</artifactId>
+            <version>${com.lazerycode.jmeter.version}</version>
+            <executions>
+              <execution>
+                <id>jmeter-tests</id>
+                <phase>verify</phase>
+                <goals>
+                  <goal>jmeter</goal>
+                </goals>
+              </execution>
+            </executions>
+            <configuration>
+              <resultsFileFormat>jtl</resultsFileFormat>
+              <propertiesUser>
+                <server>${server}</server>
+                <port>${port}</port>
+                <path>${path}</path>
+                <numThreads>${numThreads}</numThreads>
+                <rampUp>${rampUp}</rampUp>
+                <loopCount>${loopCount}</loopCount>
+                <csvfile>${csvfile}</csvfile>
+              </propertiesUser>
+            </configuration>
+          </plugin>
+        </plugins>
+      </build>
+    </profile>
+
+
+    <profile>
+      <id>no-performance-tests</id>
+      <properties>
+        <maven.test.skip>true</maven.test.skip>
+      </properties>
+      <activation>
+        <activeByDefault>true</activeByDefault>
+      </activation>
+    </profile>
+
+  </profiles>
+
+
+</project>

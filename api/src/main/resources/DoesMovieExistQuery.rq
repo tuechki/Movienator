@@ -1,0 +1,5 @@
+PREFIX : <http://example.org/movieDB/>
+
+ask{
+    <http://example.org/movieDB/movie/%1$s> a :Movie
+}

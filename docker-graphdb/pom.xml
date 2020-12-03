@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>movienator-parent</artifactId>
+    <groupId>com.ontotext.example</groupId>
+    <version>0.0.2-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <name>Movienator Docker GraphDB</name>
+  <artifactId>docker-graphdb</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <description>Movienator Docker GraphDB</description>
+
+
+  <properties>
+
+    <surefire.plugin.version>2.22.2</surefire.plugin.version>
+    <io.fabric8.version>0.31.0</io.fabric8.version>
+
+  </properties>
+
+
+  <build>
+    <finalName>${project.artifactId}</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <attachClasses>true</attachClasses>
+          <archive>
+            <manifestEntries>
+              <Build-Branch>${scmBranch}</Build-Branch>
+              <Git-SHA>${buildNumber}</Git-SHA>
+              <Build-Timestamp>${maven.build.timestamp}</Build-Timestamp>
+              <Implementation-Version>${project.version}</Implementation-Version>
+            </manifestEntries>
+          </archive>
+        </configuration>
+      </plugin>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${surefire.plugin.version}</version>
+      </plugin>
+      <plugin>
+        <groupId>io.fabric8</groupId>
+        <artifactId>docker-maven-plugin</artifactId>
+        <version>${io.fabric8.version}</version>
+        <executions>
+          <execution>
+            <goals>
+              <goal>build</goal>
+            </goals>
+          </execution>
+        </executions>
+        <configuration>
+          <images>
+            <image>
+              <alias>movienator-api</alias>
+              <name>${project.artifactId}:${project.version}</name>
+              <build>
+                <dockerFileDir>${project.basedir}/src/main/docker</dockerFileDir>
+                <assembly>
+                  <inline>
+                    <files>
+                      <file>
+                        <source>${basedir}/src/main/docker/graphdb.license</source>
+                      </file>
+                      <file>
+                        <source>${basedir}/src/main/docker/config.ttl</source>
+                      </file>
+                      <file>
+                        <source>${basedir}/src/main/docker/connector.rq</source>
+                      </file>
+                      <file>
+                        <source>${basedir}/src/main/docker/statements.trig</source>
+                      </file>
+                      <file>
+                        <source>${basedir}/src/main/docker/setup.sh</source>
+                      </file>
+                    </files>
+                  </inline>
+                </assembly>
+              </build>
+            </image>
+          </images>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+
+
+</project>

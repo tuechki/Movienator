@@ -1,0 +1,199 @@
+@prefix wgs: <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix gn: <http://www.geonames.org/ontology#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix fn: <http://www.w3.org/2005/xpath-functions#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mdb: <http://example.org/movieDB/> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rank: <http://www.ontotext.com/owlim/RDFRank#> .
+@prefix sesame: <http://www.openrdf.org/schema/sesame#> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+
+
+<http://example.org/movieDB/> {
+
+
+
+<http://example.org/movieDB/movie/22> a mdb:Movie .
+
+<http://example.org/movieDB/movie/22> mdb:title "The Amazing Spider-Man" .
+
+<http://example.org/movieDB/movie/22> mdb:color "Color" .
+
+<http://example.org/movieDB/movie/22> mdb:directedBy <http://example.org/movieDB/person/MarcWebb> .
+
+<http://example.org/movieDB/movie/22> mdb:numCritics "599"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:duration "153"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:leadActor <http://example.org/movieDB/person/EmmaStone> .
+
+<http://example.org/movieDB/movie/22> mdb:2ndActor <http://example.org/movieDB/person/AndrewGarfield> .
+
+<http://example.org/movieDB/movie/22> mdb:3rdActor <http://example.org/movieDB/person/ChrisZylka> .
+
+<http://example.org/movieDB/movie/22> mdb:gross "262030663"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:numUserVotes "451803"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:numUserReviews "1225"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:castTotalFBLikes "28489"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:numFacesInPoster "0"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> rdf:about <http://www.imdb.com/title/tt0948470> .
+
+<http://example.org/movieDB/movie/22> mdb:language "English" .
+
+<http://example.org/movieDB/movie/22> mdb:country <http://example.org/movieDB/country/USA> .
+
+<http://example.org/movieDB/movie/22> mdb:contentRating "PG-13" .
+
+<http://example.org/movieDB/movie/22> mdb:budget "230000000"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:year "2012"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:imdbScore "7.0"^^xsd:double .
+
+<http://example.org/movieDB/movie/22> mdb:aspectRatio "2.35"^^xsd:double .
+
+<http://example.org/movieDB/movie/22> mdb:movieFBLikes "56000"^^xsd:long .
+
+<http://example.org/movieDB/movie/22> mdb:keyword "spider man" , "lizard" , "outcast" , "spider" , "teenager" .
+
+<http://example.org/movieDB/movie/22> mdb:genre "Action" , "Adventure" , "Fantasy" .
+
+
+
+
+
+<http://example.org/movieDB/person/MarcWebb> a mdb:Director .
+<http://example.org/movieDB/person/MarcWebb> foaf:name "Marc Webb" .
+<http://example.org/movieDB/person/MarcWebb> mdb:directorFBLikes "464"^^xsd:long .
+
+
+<http://example.org/movieDB/person/EmmaStone> a mdb:Actor .
+<http://example.org/movieDB/person/EmmaStone> mdb:actorFBLikes "15000"^^xsd:long .
+<http://example.org/movieDB/person/EmmaStone> foaf:name "Emma Stone" .
+
+
+<http://example.org/movieDB/person/AndrewGarfield> a mdb:Actor .
+<http://example.org/movieDB/person/AndrewGarfield> foaf:name "Andrew Garfield" .
+<http://example.org/movieDB/person/AndrewGarfield> mdb:actorFBLikes "10000"^^xsd:long .
+
+
+<http://example.org/movieDB/person/ChrisZylka> a mdb:Actor .
+<http://example.org/movieDB/person/ChrisZylka> foaf:name "Chris Zylka" .
+<http://example.org/movieDB/person/ChrisZylka> mdb:actorFBLikes "963"^^xsd:long .
+
+<http://example.org/movieDB/country/USA> rdfs:label "USA" .
+
+
+
+
+
+
+
+
+
+
+
+
+
+<http://example.org/movieDB/movie/3> a mdb:Movie .
+
+<http://example.org/movieDB/movie/3> mdb:title "Spectre" .
+
+<http://example.org/movieDB/movie/3> mdb:color "Color" .
+
+<http://example.org/movieDB/movie/3> mdb:directedBy <http://example.org/movieDB/person/SamMendes> .
+
+<http://example.org/movieDB/movie/3> mdb:numCritics "602"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:duration "148"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:leadActor <http://example.org/movieDB/person/ChristophWaltz> .
+
+<http://example.org/movieDB/movie/3> mdb:2ndActor <http://example.org/movieDB/person/RoryKinnear> .
+
+<http://example.org/movieDB/movie/3> mdb:3rdActor <http://example.org/movieDB/person/StephanieSigman> .
+
+<http://example.org/movieDB/movie/3> mdb:gross "200074175"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:numUserVotes "275868"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:numUserReviews "994"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:castTotalFBLikes "11700"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:numFacesInPoster "1"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> rdf:about <http://www.imdb.com/title/tt2379713> .
+
+<http://example.org/movieDB/movie/3> mdb:language "English" .
+
+<http://example.org/movieDB/movie/3> mdb:country <http://example.org/movieDB/country/UK> .
+
+<http://example.org/movieDB/movie/3> mdb:contentRating "PG-13" .
+
+<http://example.org/movieDB/movie/3> mdb:budget "245000000"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:year "2015"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:imdbScore "6.8"^^xsd:double .
+
+<http://example.org/movieDB/movie/3> mdb:aspectRatio "2.35"^^xsd:double .
+
+<http://example.org/movieDB/movie/3> mdb:movieFBLikes "85000"^^xsd:long .
+
+<http://example.org/movieDB/movie/3> mdb:keyword "bomb" , "espionage" , "sequel" , "spy" , "terrorist" .
+
+<http://example.org/movieDB/movie/3> mdb:genre "Action" , "Adventure" , "Thriller" .
+
+<http://example.org/movieDB/movie/3> mdb:plot "A cryptic message from 007's past sends him pitted against a mysterious terrorist organization called Spectre, and learns of its involvement in previous events of his most dangerous missions." .
+
+
+
+
+
+<http://example.org/movieDB/person/SamMendes> a mdb:Director .
+<http://example.org/movieDB/person/SamMendes> foaf:name "Sam Mendes" .
+<http://example.org/movieDB/person/SamMendes> mdb:directorFBLikes "0"^^xsd:long .
+
+
+<http://example.org/movieDB/person/ChristophWaltz> a mdb:Actor .
+<http://example.org/movieDB/person/ChristophWaltz> foaf:name "Christoph Waltz" .
+<http://example.org/movieDB/person/ChristophWaltz> mdb:actorFBLikes "11000"^^xsd:long .
+
+
+<http://example.org/movieDB/person/RoryKinnear> a mdb:Actor .
+<http://example.org/movieDB/person/RoryKinnear> foaf:name "Rory Kinnear" .
+<http://example.org/movieDB/person/RoryKinnear> mdb:actorFBLikes "393"^^xsd:long .
+
+
+<http://example.org/movieDB/person/StephanieSigman> a mdb:Actor .
+<http://example.org/movieDB/person/StephanieSigman> foaf:name "Stephanie Sigman" .
+<http://example.org/movieDB/person/StephanieSigman> mdb:actorFBLikes "161"^^xsd:long .
+
+<http://example.org/movieDB/country/UK> rdfs:label "UK" .
+
+
+
+
+
+
+
+
+
+
+mdb:leadActor rdfs:subPropertyOf mdb:starring .
+mdb:2ndActor rdfs:subPropertyOf mdb:starring .
+mdb:3rdActor rdfs:subPropertyOf mdb:starring .
+mdb:starring rdfs:domain mdb:Movie .
+mdb:starring rdfs:range mdb:Actor .
+
+
+}

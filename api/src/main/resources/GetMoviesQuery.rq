@@ -1,0 +1,24 @@
+PREFIX : <http://www.ontotext.com/connectors/elasticsearch#>
+PREFIX inst: <http://www.ontotext.com/connectors/elasticsearch/instance#>
+PREFIX mdb: <http://example.org/movieDB/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT ?movieURI ?count ?title ?language ?released ?imdbLink{
+ ?search a inst:movies;
+
+  :query '''
+    {
+       "query":  %s
+    }
+        ''' ;
+    :limit "%d";
+    :offset "%d";
+    :entities ?movieURI;
+    :totalHits ?count.
+
+    ?movieURI mdb:title ?title .
+    optional {?movieURI mdb:language ?language }
+    optional {?movieURI mdb:year ?released }
+    ?movieURI rdf:about ?imdbLink.
+    
+}

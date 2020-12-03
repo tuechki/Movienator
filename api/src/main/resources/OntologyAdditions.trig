@@ -1,0 +1,9 @@
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix mdb: <http://example.org/movieDB/> .
+
+
+mdb:leadActor rdfs:subPropertyOf mdb:starring .
+mdb:2ndActor rdfs:subPropertyOf mdb:starring .
+mdb:3rdActor rdfs:subPropertyOf mdb:starring .
+mdb:starring rdfs:domain mdb:Movie .
+mdb:starring rdfs:range mdb:Actor .

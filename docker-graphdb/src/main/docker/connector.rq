@@ -1,0 +1,70 @@
+PREFIX :<http://www.ontotext.com/connectors/elasticsearch#>
+PREFIX inst:<http://www.ontotext.com/connectors/elasticsearch/instance#>
+INSERT DATA {
+	inst:movies :createConnector '''
+{
+  "fields": [
+    {
+      "fieldName": "title",
+      "propertyChain": [
+        "http://example.org/movieDB/title"
+      ],
+      "indexed": true,
+      "stored": true,
+      "analyzed": true,
+      "multivalued": true,
+      "fielddata": false
+    },
+    {
+      "fieldName": "actor$1",
+      "propertyChain": [
+        "http://example.org/movieDB/leadActor"
+      ],
+      "indexed": true,
+      "stored": false,
+      "analyzed": false,
+      "multivalued": true,
+      "fielddata": false
+    },
+    {
+      "fieldName": "actor$2",
+      "propertyChain": [
+        "http://example.org/movieDB/2ndActor"
+      ],
+      "indexed": true,
+      "stored": false,
+      "analyzed": false,
+      "multivalued": true,
+      "fielddata": false
+    },
+    {
+      "fieldName": "actor$3",
+      "propertyChain": [
+        "http://example.org/movieDB/3rdActor"
+      ],
+      "indexed": true,
+      "stored": false,
+      "analyzed": false,
+      "multivalued": true,
+      "fielddata": false
+    }
+  ],
+  "types": [
+    "http://example.org/movieDB/Movie"
+  ],
+  "readonly": false,
+  "detectFields": false,
+  "importGraph": false,
+  "elasticsearchNode": "ELASTICSEARCH_URI:ELASTICSEARCH_PORT",
+  "elasticsearchClusterSniff": true,
+  "manageIndex": true,
+  "manageMapping": true,
+  "bulkUpdateBatchSize": 5000,
+  "bulkUpdateRequestSize": 5242880,
+  "indexCreateSettings": {
+    "translog.sync_interval": "5s",
+    "translog.durability": "async"
+  }
+}
+''' .
+}

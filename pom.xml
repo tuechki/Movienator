@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
+  <parent>
+    <groupId>com.ontotext.parents</groupId>
+    <artifactId>root</artifactId>
+    <version>4.4.0</version>
+  </parent>
+
+  <groupId>com.ontotext.example</groupId>
+  <artifactId>movienator-parent</artifactId>
+  <version>0.0.2-SNAPSHOT</version>
+  <packaging>pom</packaging>
+
+  <name>Movienator API Parent</name>
+  <description>Movienator Parent</description>
+
+  <modules>
+    <module>api</module>
+    <module>docker-graphdb</module>
+    <module>docker-compose</module>
+    <module>performance-tests</module>
+    <module>acceptance-tests</module>
+  </modules>
+
+
+  <properties>
+    <spring-boot.version>2.1.6.RELEASE</spring-boot.version>
+    <com.fasterxml.jackson.core>2.9.9.3</com.fasterxml.jackson.core>
+    <org.json.version>20180813</org.json.version>
+    <junit.jupiter.version>5.5.0</junit.jupiter.version>
+    <rdf4j.version>2.5.3</rdf4j.version>
+    <surefire.plugin.version>2.22.2</surefire.plugin.version>
+  </properties>
+
+
+  <dependencyManagement>
+
+    <dependencies>
+
+      <dependency>
+        <groupId>com.fasterxml.jackson.core</groupId>
+        <artifactId>jackson-databind</artifactId>
+        <version>${com.fasterxml.jackson.core}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-test</artifactId>
+        <version>${spring-boot.version}</version>
+        <scope>test</scope>
+        <exclusions>
+          <exclusion>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+          </exclusion>
+        </exclusions>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>${org.json.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-web</artifactId>
+        <version>${spring-boot.version}</version>
+      </dependency>
+
+      <dependency>
+        <groupId>org.junit.jupiter</groupId>
+        <artifactId>junit-jupiter</artifactId>
+        <version>${junit.jupiter.version}</version>
+        <scope>test</scope>
+      </dependency>
+
+      <dependency>
+        <groupId>org.eclipse.rdf4j</groupId>
+        <artifactId>rdf4j-runtime</artifactId>
+        <version>${rdf4j.version}</version>
+      </dependency>
+
+    </dependencies>
+
+  </dependencyManagement>
+
+
+  <scm>
+    <connection>scm:git:git@gitlab.ontotext.com:daniel.tuechki/movienator.git</connection>
+    <developerConnection>scm:git:git@gitlab.ontotext.com:daniel.tuechki/movienator.git
+    </developerConnection>
+    <url>scm:git:git@gitlab.ontotext.com:daniel.tuechki/movienator.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+</project>
