@@ -1,6 +1,6 @@
 # Movienator #
 
-Project for retrieve information for movies from OMDb.
+Project for retrieving information for movies from OMDb database and local dataset.
 
 Here is the [specification](https://gitlab.ontotext.com/SAS/k9/blob/master/architecture.md#functionalities_overview).
 
